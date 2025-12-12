@@ -1,19 +1,44 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+erp:
+  label: ERP
+  permalink: /erp
+  description: Articles and guides related to ERP system issues and processes.
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+production:
+  label: Production
+  permalink: /production
+  description: Documentation for production department workflows and troubleshooting.
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
+costing:
+  label: Costing
+  permalink: /costing
+  description: Costing related issues, guidelines, and fixes.
 
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+dispatch:
+  label: Dispatch
+  permalink: /dispatch
+  description: Dispatch operations and support guides.
+
+accounting:
+  label: Accounting
+  permalink: /accounting
+  description: Basic accounting concepts and troubleshooting for IT support.
+
+trading:
+  label: Trading
+  permalink: /trading
+  description: Guides and fixes related to trading department queries.
+
+it-support:
+  label: IT Support
+  permalink: /it-support
+  description: General IT support tips, troubleshooting, and common fixes.
+
+faq:
+  label: FAQ
+  permalink: /faq
+  description: Frequently asked questions from employees.
+
+workflow:
+  label: Workflow
+  permalink: /workflow
+  description: Step-by-step workflow guides for various processes.

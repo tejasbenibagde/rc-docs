@@ -1,0 +1,8 @@
+{
+  "label": "Accounts",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Common accounts-related tasks and workflows, like opening a date, deleting GRN, creating Ledgers and more."
+  }
+}
