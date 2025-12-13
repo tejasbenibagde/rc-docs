@@ -6,21 +6,5 @@ tejasbenibagde:
   page: true
   socials:
     github: tejasbenibagde
-    
-  bio: |
-    Look, if you're reading this bio, you're either:
-    1. A recruiter (hello 👋 please send interesting opportunities)
-    2. A colleague checking if I wrote something embarrassing (I probably did)
-    3. Actually interested (weird, but okay)
-
-    I mostly deal with ERP systems, SQL databases, and the existential dread that comes with both. 
-    I built these docs because I got tired of answering and asking the same questions.
-    
-    Fun fact: I've accidentally broken production exactly 3 times.
-    Each time taught me something valuable (mainly: how to write better rollback scripts).
-
-    If you need me, I'm probably:
-    - Writing a SQL query that's longer than it should be
-    - Explaining why we can't "just add that feature" to the ERP
-
-    P.S. Yes, I know the ERP system is weird. We're working on it. Slowly.
+    linkedin: tejasbenibagde
+    x: tejasbenibagde
