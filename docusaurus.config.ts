@@ -24,14 +24,15 @@ const config: Config = {
     locales: ['en'],
   },
 
-  // Add the search plugin here:
   themes: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
       ({
         hashed: true,
-        // You can add more options here if needed
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+        indexPages: true,
       }),
     ],
   ],
@@ -65,7 +66,7 @@ const config: Config = {
   themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
-      defaultMode: 'dark',           // Set default to dark mode
+      defaultMode: 'dark',
       respectPrefersColorScheme: false,
       disableSwitch: false, 
     },
@@ -84,11 +85,6 @@ const config: Config = {
           label: 'Team Resources',
         },
         { to: '/blog', label: 'Updates', position: 'left' },
-        {
-          href: 'https://github.com/tejasbenibagde/rc-docs',
-          label: 'GitHub',
-          position: 'right',
-        },
       ],
     },
     footer: {

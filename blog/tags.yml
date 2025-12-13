@@ -1,44 +1,19 @@
-erp:
-  label: ERP
+ERP:
+  label: ERP System
   permalink: /erp
-  description: Articles and guides related to ERP system issues and processes.
+  description: Comprehensive guides for ERP navigation, transaction processing, module configuration, user management, and system administration. Covers both frontend operations and backend logic.
 
-production:
-  label: Production
-  permalink: /production
-  description: Documentation for production department workflows and troubleshooting.
+configuration:
+  label: System Configuration
+  permalink: /configuration
+  description: Step-by-step instructions for configuring ERP modules, forms, series, workflows, and business rules. Includes troubleshooting for configuration errors and best practices.
 
-costing:
-  label: Costing
-  permalink: /costing
-  description: Costing related issues, guidelines, and fixes.
+SQL:
+  label: Database & SQL
+  permalink: /sql
+  description: Database schema reference, optimized queries, performance tuning, data fixes, and troubleshooting scripts. Covers CONFIG_MAST, transaction tables, and reporting views.
 
-dispatch:
-  label: Dispatch
-  permalink: /dispatch
-  description: Dispatch operations and support guides.
-
-accounting:
-  label: Accounting
-  permalink: /accounting
-  description: Basic accounting concepts and troubleshooting for IT support.
-
-trading:
-  label: Trading
-  permalink: /trading
-  description: Guides and fixes related to trading department queries.
-
-it-support:
-  label: IT Support
-  permalink: /it-support
-  description: General IT support tips, troubleshooting, and common fixes.
-
-faq:
-  label: FAQ
-  permalink: /faq
-  description: Frequently asked questions from employees.
-
-workflow:
-  label: Workflow
-  permalink: /workflow
-  description: Step-by-step workflow guides for various processes.
+docs:
+  label: Documentation
+  permalink: /docs
+  description: Where we put things so we don't have to remember them. Step-by-step guides, SQL fixes, and everything else we keep explaining. Search before you ask. Seriously.

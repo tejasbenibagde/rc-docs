@@ -1,0 +1,138 @@
+---
+title: Opening / Freezing Dates (ERP)
+description: How series freeze dates work and how to manage them safely
+sidebar_position: 1
+tags: [ERP, configuration, SQL]
+---
+
+# Opening & Freezing Dates (ERP)
+
+This page explains how **freeze dates** work in ERP and how to change them safely using  
+**Configuration Master (Form 04.004.04)**.
+
+This is a **routine but sensitive task**. Small mistakes here can block users or unlock data you didn’t mean to.
+
+---
+
+## What is a Freeze Date?
+
+A **Freeze Date** locks transactions **up to a certain date** for a specific series.
+
+- Dates **on or before** the freeze date → ❌ locked  
+- Dates **after** the freeze date → ✅ allowed
+
+Freeze dates are usually applied **per series**, not globally.
+
+---
+
+## Where to Change It (Frontend)
+
+**Form**: `04.004.04 – Configuration Master`  
+**Path**: Main Menu → Configuration → Configuration Master
+
+<!-- truncate -->
+---
+
+
+## Quick Steps (Most Common Flow)
+
+1. Open **Configuration Master**
+2. Enter or select the **Series**
+3. Click **Show**
+4. Click **Edit**
+5. Update the **Freeze Date**
+6. Save
+
+That’s it — but read the rules below before touching anything.
+
+---
+
+## Detailed Flow (When You Need Context)
+
+### 1. Load the Series
+- Enter the **Series code**
+- Click **Show**
+- Verify you’re editing the correct entity & accounting year
+
+### 2. Edit Configuration
+- Click **Edit**
+- Locate the **Freeze Date** field
+
+### 3. Change Freeze Date
+- Pick the required date
+- Transactions **before or on this date** will remain frozen
+- Changes only apply **after** the freeze date
+
+:::warning
+You **cannot modify** records dated **on or before** the freeze date.
+:::
+
+---
+
+## Freeze Date Logic (Read This Once)
+
+:::info Example
+If today is **25 Jan**  
+Freeze Date = **22 Jan**
+
+- 22 Jan and earlier → **Frozen**
+- 23 Jan onwards → **Open**
+:::
+
+---
+
+## Auto-Freeze Logic (If Enabled)
+
+Some series auto-freeze based on a rolling rule.
+
+:::info Example
+Auto Freeze Days = 3  
+Today = 25 Jan  
+
+Auto Freeze Date = 25 − 3 = **22 Jan**
+:::
+
+If auto-freeze feels “off”, check database flags (below).
+
+---
+
+## Database Reference (For IT / Support)
+
+### Table
+```sql
+CONFIG_MAST
+```
+
+## Important Columns (CONFIG_MAST)
+
+| Column Name            | Description                                  |
+|------------------------|----------------------------------------------|
+| `SERIES`               | Series code                                  |
+| `FREEZDATE`            | Current freeze date for the series           |
+| `AUTO_FREEZDATE_FLAG`  | Auto-freeze rule / logic applied             |
+| `UNFREEZDATE`          | Last date when the series was unfrozen       |
+| `UNFREEZDATE_USERS`    | Users allowed to unfreeze the series         |
+| `CLOSED_DATE`          | Series closure date (no further activity)    |
+
+
+## Common FAQs
+
+<details>
+<summary>How do I open a date in ERP?</summary>
+
+Open the **Configuration Master**, edit the required **Series**, and update the **Freeze Date** to a later date.
+</details>
+
+<details>
+<summary>Opening the date for a series</summary>
+
+Dates are opened by **changing the Freeze Date** for that specific series.  
+Transactions after the freeze date become editable.
+</details>
+
+<details>
+<summary>What is the freeze date logic?</summary>
+
+Entries **on or before** the freeze date are locked.  
+Entries **after** the freeze date remain open.
+</details>
