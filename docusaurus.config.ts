@@ -84,11 +84,6 @@ const config: Config = {
           label: 'Team Resources',
         },
         { to: '/blog', label: 'Updates', position: 'left' },
-        {
-          href: 'https://github.com/tejasbenibagde/rc-docs',
-          label: 'GitHub',
-          position: 'right',
-        },
       ],
     },
     footer: {
