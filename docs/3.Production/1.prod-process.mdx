@@ -1,0 +1,229 @@
+---
+title: Production Process – End to End
+sidebar_position: 1
+tags: [production, process, costing, dispatch, ERP]
+---
+
+# Production Process (End-to-End)
+
+This page explains how a product moves from an **idea** to a **dispatch-ready item** inside our company.  
+This is a high-level flow used by Production, Quality, Costing, Accounts, and Dispatch.
+
+---
+
+{/* truncate */}
+
+## At-a-Glance Overview
+
+```mermaid
+flowchart LR
+    A[Idea] --> B[Planning & Approval]
+    B --> C[Production]
+    C --> D[Quality Check]
+    D --> E[Branding]
+    E --> F[ERP Entry]
+    F --> G[Packaging]
+    G --> H[WIP Verification]
+    H --> I[Store]
+    I --> J[Dispatch]
+```
+
+## 1. Pre-Production (Product Planning)
+
+This phase defines what to make and how to make it.
+No physical production starts before this is complete.
+
+```mermaid
+timeline
+    title Pre-Production
+    section Planning
+        Idea Finalization : Management
+        Feasibility Review : Production Team
+    section Design
+        Mould Design : Vendor
+        Sample Creation : Prototype
+    section Approval
+        Quality Review
+        Final Approval
+```
+
+### Key Activities
+
+- Product idea finalized
+- Production feasibility discussion
+- Director-level approval
+- Mould design & sample creation
+- Sample review and modifications
+- Final approval of product & mould
+
+---
+
+## 2. Production at Plant
+
+Once approved, production starts at the plant.
+
+### Steps
+- Moulds are installed on machines
+- Production starts as per plan
+- Quality Department checks:
+  - Product dimensions
+  - Finish & appearance
+  - Compliance with quality standards
+- Branding Department:
+  - Clicks product photos
+  - Records videos
+  - Prepares brochures & marketing material
+  - Sends content to dealers
+
+---
+
+## 3. Production Entry & Stock Creation (ERP)
+
+This is where ERP comes into play.
+
+### ERP & Data Entry
+
+```mermaid
+graph TD
+    A[Production Completed] --> B[Data Entry]
+    B --> C[Production Entry Form]
+    C --> D{BOM Available?}
+    D -->|Yes| E[Auto Material Calculation]
+    D -->|No| F[Manual Entry]
+    E --> G[Stock Updated]
+    F --> G
+```
+
+### ERP Notes
+- **Finished goods** are added to stock
+- **BOM (Bill Of Materials)** usage is preferred:
+  - Faster entries
+  - Consistent consumption
+  - Fewer errors
+
+---
+
+## 4. Mould Maintenance & Repairs
+
+Mould issues are common and handled based on **severity**.
+
+### Repair Strategy
+
+- Minor issues → Fixed **in-house**
+- Vendor repair only if:
+  - Damage is major
+  - Quality is impacted
+- Goal: **Minimum downtime, maximum control**
+
+---
+
+## 5. Post-Production & Packaging
+
+After production, goods move to packaging and verification.
+
+```mermaid
+graph TD
+    A[Packaging] --> B[WIP Check]
+    B --> C{Quantity}
+    C --> D{Weight}
+    D --> E{Stickers}
+    E --> F{Variations}
+    F -->|Pass| G[Store]
+    F -->|Fail| H[Return to Packaging]
+```
+
+**WIP Verifies**
+- Quantity per batch
+- Weight accuracy
+- Date & batch stickers
+- Product variation inside boxes
+
+
+---
+
+## 6. Store & Dispatch
+
+```mermaid
+sequenceDiagram
+    Store->>Dispatch: Material handover
+    Dispatch->>Dispatch: Prepare invoice/challan
+    Dispatch->>Transport: Arrange shipment
+    Transport->>Customer: Deliver goods
+    Dispatch->>ERP: Update delivery status
+
+```
+
+**Responsibilities**
+- Billing prepares invoice
+- Store hands material to Dispatch
+- Dispatch ships to dealers/customers
+---
+
+## 7. Costing & Accounts (Monthly)
+This process runs **parallel** to production.
+### Costing
+- Calculated monthly
+- Includes:
+  - Raw material
+  - Electricity
+  - Maintenance
+  - Labour
+  - and more
+- Cost is **never fixed**
+
+### Accounts
+- Verifies costing bills
+- Matches ERP and financial data
+
+---
+
+## 8. Pricing & Dealer Margin
+
+Pricing is finalized after cost validation.
+
+**Pricing Principles**
+- Company should not incur loss
+- Dealer margin must be attractive
+- Poor margin = poor sales
+Each product has a **unique price** based on its cost structure.
+
+---
+
+## Common FAQs
+
+<details> 
+<summary><strong>Why can’t prices be fixed yearly?</strong></summary>
+
+Costs change monthly due to:
+- Raw material prices
+- Electricity rates
+- Labour & overtime
+- Maintenance
+- Transport & fuel
+</details> 
+<details> 
+<summary><strong>What happens if Quality rejects a batch?</strong></summary>
+- **Rework or scrap** decision
+- Preventive action implemented
+
+</details> 
+<details> 
+<summary><strong>How are dealers informed about new products?</strong></summary>
+- WhatsApp broadcast
+- Email brochures
+- Dealer meetings
+- ERP notifications
+- Physical samples (key dealers)
+</details> 
+
+<details> 
+<summary><strong>What is mixing ?</strong></summary>
+- Mixing is combining different raw materials to create a **base material for production**.
+- It ensures uniformity and consistency in the final product.
+</details> 
+
+<details> 
+<summary><strong>What happens to the products that are rejected or scrap ?</strong></summary>
+- Rejected products are moved to the **grinding area**.
+- They are then crushed and reused in production as raw material.
+</details> 

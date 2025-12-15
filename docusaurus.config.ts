@@ -7,6 +7,14 @@ const config: Config = {
   tagline: 'Just some docs for internal use',
   favicon: 'img/favicon.ico',
 
+  // ⬇️ ADD MERMAID TO THEMES ⬇️
+  themes: ['@docusaurus/theme-mermaid'],
+
+  // ⬇️ ENABLE MERMAID HERE (TOP LEVEL) ⬇️
+  markdown: {
+    mermaid: true,
+  },
+
   future: {
     v4: true,
   },
@@ -24,16 +32,16 @@ const config: Config = {
     locales: ['en'],
   },
 
-  themes: [
+  // ⬇️ ADD SEARCH PLUGIN SEPARATELY ⬇️
+  plugins: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
-      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
-      ({
+      {
         hashed: true,
         highlightSearchTermsOnTargetPage: true,
         explicitSearchResultPath: true,
         indexPages: true,
-      }),
+      },
     ],
   ],
 
@@ -43,15 +51,13 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/tejasbenibagde/rc-docs/edit/main',
         },
         blog: {
           showReadingTime: true,
           feedOptions: {
             type: ['rss', 'atom'],
-            xslt: true,
+            // xsft: true,
           },
-          editUrl: 'https://github.com/tejasbenibagde/rc-docs/edit/main',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -65,10 +71,20 @@ const config: Config = {
 
   themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
+
+    // ⬇️ MERMAID THEME CONFIG (OPTIONAL) ⬇️
+    mermaid: {
+      theme: { light: 'default', dark: 'dark' },
+      options: {
+        fontFamily: 'inherit',
+        securityLevel: 'loose',
+      },
+    },
+
     colorMode: {
       defaultMode: 'dark',
       respectPrefersColorScheme: false,
-      disableSwitch: false, 
+      disableSwitch: false,
     },
 
     navbar: {
@@ -82,9 +98,13 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Team Resources',
+          label: 'Docs',
         },
-        { to: '/blog', label: 'Updates', position: 'left' },
+        {
+          to: '/docs/tags',
+          label: 'Tags',
+          position: 'left',
+        },
       ],
     },
     footer: {
@@ -103,10 +123,6 @@ const config: Config = {
           title: 'More',
           items: [
             { label: 'Blog', to: '/blog' },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/tejasbenibagde/rc-docs',
-            },
           ],
         },
       ],

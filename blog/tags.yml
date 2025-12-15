@@ -1,19 +1,39 @@
 ERP:
   label: ERP System
   permalink: /erp
-  description: Comprehensive guides for ERP navigation, transaction processing, module configuration, user management, and system administration. Covers both frontend operations and backend logic.
+  description: Day-to-day ERP usage, forms, transactions, and system behavior. Covers how things actually work on the ground.
+
+production:
+  label: Production
+  permalink: /production
+  description: End-to-end production workflows from planning to dispatch. Includes plant operations, ERP entries, quality checks, and handovers.
+
+process:
+  label: Business Process
+  permalink: /process
+  description: How things flow inside the company. Cross-department processes, approvals, dependencies, and real-world execution.
+
+costing:
+  label: Costing
+  permalink: /costing
+  description: Product costing logic, monthly calculations, cost components, and how pricing decisions are influenced.
+
+dispatch:
+  label: Dispatch & Logistics
+  permalink: /dispatch
+  description: Store, dispatch, billing coordination, document flow, and shipment handling up to customer delivery.
 
 configuration:
   label: System Configuration
   permalink: /configuration
-  description: Step-by-step instructions for configuring ERP modules, forms, series, workflows, and business rules. Includes troubleshooting for configuration errors and best practices.
+  description: ERP configuration, series setup, freeze dates, workflows, and business rules. Change carefully.
 
 SQL:
   label: Database & SQL
   permalink: /sql
-  description: Database schema reference, optimized queries, performance tuning, data fixes, and troubleshooting scripts. Covers CONFIG_MAST, transaction tables, and reporting views.
+  description: Database tables, SQL queries, data fixes, and troubleshooting scripts. Use with caution.
 
 docs:
   label: Documentation
   permalink: /docs
-  description: Where we put things so we don't have to remember them. Step-by-step guides, SQL fixes, and everything else we keep explaining. Search before you ask. Seriously.
+  description: Stuff we write down so we don’t have to explain it again. Read this first.
