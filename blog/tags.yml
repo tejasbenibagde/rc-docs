@@ -37,3 +37,23 @@ docs:
   label: Documentation
   permalink: /docs
   description: Stuff we write down so we don’t have to explain it again. Read this first.
+
+incentives:
+  label: Incentives & Sales
+  permalink: /incentives
+  description: Sales incentives, employee-party mapping, commission calculations, and monthly payout processes.
+
+sales:
+  label: Sales Operations
+  permalink: /sales
+  description: Sales reporting, dealer management, territory assignments, and sales data management.
+
+marketing:
+  label: Marketing Department
+  permalink: /marketing
+  description: Marketing team processes, employee assignments, dealer handovers, and department-specific workflows.
+
+fixes:
+  label: Common Fixes
+  permalink: /fixes
+  description: Frequently needed fixes, quick solutions, and troubleshooting guides for recurring issues.
