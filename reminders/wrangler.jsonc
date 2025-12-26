@@ -1,0 +1,21 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "reminders",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-09-06",
+	"observability": {
+		"enabled": true
+	},
+	"kv_namespaces": [
+		{
+			"binding": "REMINDERS_KV",
+			"id": "9eda6f35073d4bc1bea65ae7b2e57069",
+			// "remote": true
+		}
+	],
+	"triggers": {
+		"crons": [
+			"* * * * *"
+		]
+	},
+}
