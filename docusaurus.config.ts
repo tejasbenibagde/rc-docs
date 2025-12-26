@@ -18,8 +18,7 @@ const config: Config = {
   },
 
   customFields: {
-    reminderApiUrl: process.env.DOCUSAURUS_REMINDER_URL,
-
+    reminderApiUrl: process.env.DOCUSAURUS_REMINDER_URL || process.env.REMINDER_URL || "https://reminders.tejas-benibagde.workers.dev",
   },
 
   future: {
