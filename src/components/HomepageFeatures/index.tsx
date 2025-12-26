@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import styles from './styles.module.css';
-import RemindersSection from '../reminders/reminderSection';
+import RemindersSection from '../reminder/reminderSection';
 
 
 export default function HomepageFeatures(): ReactNode {
