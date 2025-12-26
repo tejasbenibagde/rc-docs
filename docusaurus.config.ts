@@ -17,6 +17,7 @@ const config: Config = {
     mermaid: true,
   },
 
+  // ⬇️ CUSTOM FIELDS ⬇️
   customFields: {
     reminderApiUrl: process.env.DOCUSAURUS_REMINDER_URL || process.env.REMINDER_URL || "https://reminders.tejas-benibagde.workers.dev",
   },
@@ -26,6 +27,7 @@ const config: Config = {
   },
 
   url: 'https://your-site.com',
+
   baseUrl: '/',
 
   organizationName: 'your-github-username',
