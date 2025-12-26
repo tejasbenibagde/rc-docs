@@ -1,58 +1,40 @@
 import type { Reminder, ReminderRequest } from '../types';
-import type { Env } from '../index';
+
+const store = new Map<string, Reminder>();
 
 export class ReminderService {
-	constructor(private env: Env) {}
+  async create(data: ReminderRequest): Promise<Reminder> {
+    const id = Date.now().toString();
 
-	async create(data: ReminderRequest): Promise<Reminder> {
-		const id = Date.now().toString();
-		const reminder: Reminder = {
-			id,
-			title: data.title,
-			description: data.description || '',
-			dueDate: new Date(data.dueDate).toISOString(),
-			email: data.email,
-			sent: false,
-			created: new Date().toISOString(),
-		};
+    const reminder: Reminder = {
+      id,
+      title: data.title,
+      description: data.description || '',
+      dueDate: new Date(data.dueDate).toISOString(),
+      email: data.email,
+      sent: false,
+      created: new Date().toISOString(),
+    };
 
-		await this.env.REMINDERS_KV.put(`reminder:${id}`, JSON.stringify(reminder));
-		return reminder;
-	}
+    store.set(id, reminder);
+    return reminder;
+  }
 
-	async getAll(): Promise<Reminder[]> {
-		const list = await this.env.REMINDERS_KV.list();
-		const reminders: Reminder[] = [];
+  async getAll(): Promise<Reminder[]> {
+    return Array.from(store.values()).sort(
+      (a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
+    );
+  }
 
-		for (const key of list.keys) {
-			const reminder = (await this.env.REMINDERS_KV.get(
-				key.name,
-				'json'
-			)) as Reminder;
-			if (reminder) reminders.push(reminder);
-		}
+  async delete(id: string): Promise<void> {
+    store.delete(id);
+  }
 
-		reminders.sort(
-			(a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
-		);
-		return reminders;
-	}
+  async update(reminder: Reminder): Promise<void> {
+    store.set(reminder.id, reminder);
+  }
 
-	async delete(id: string): Promise<void> {
-		await this.env.REMINDERS_KV.delete(`reminder:${id}`);
-	}
-
-	async update(reminder: Reminder): Promise<void> {
-		await this.env.REMINDERS_KV.put(
-			`reminder:${reminder.id}`,
-			JSON.stringify(reminder)
-		);
-	}
-
-	async getById(id: string): Promise<Reminder | null> {
-		return (await this.env.REMINDERS_KV.get(
-			`reminder:${id}`,
-			'json'
-		)) as Reminder | null;
-	}
+  async getById(id: string): Promise<Reminder | null> {
+    return store.get(id) ?? null;
+  }
 }

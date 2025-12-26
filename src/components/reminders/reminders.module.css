@@ -1,0 +1,276 @@
+.cardSent {
+  border: 2px solid var(--ifm-color-primary);
+  background-color: #f3e8ff;
+  /* very light purple */
+}
+
+.cardOverdue {
+  border: 2px solid #d53f8c;
+  /* a rich magenta-pink */
+  background-color: #fff0f6;
+  /* very light pink */
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  user-select: none;
+}
+
+.badgeSent {
+  background: var(--ifm-color-primary-light);
+  color: var(--ifm-color-primary-darkest);
+  box-shadow: 0 0 8px var(--ifm-color-primary-light);
+}
+
+.badgeOverdue {
+  background: #d53f8c;
+  /* matching border */
+  color: white;
+  box-shadow: 0 0 8px #d53f8c;
+}
+
+.badgeUpcoming {
+  background: var(--ifm-color-primary-lighter);
+  color: var(--ifm-color-primary-darker);
+  box-shadow: 0 0 6px var(--ifm-color-primary-lighter);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.filterButton {
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  background: var(--ifm-color-emphasis-200);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--ifm-color-primary-darkest);
+  transition: background-color 0.2s ease;
+}
+
+.filterButton:hover {
+  background: var(--ifm-color-primary-light);
+  color: var(--ifm-color-primary-darkest);
+}
+
+.filterButtonActive {
+  background: var(--ifm-color-primary);
+  color: white;
+  box-shadow: 0 0 10px var(--ifm-color-primary);
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-900);
+  font-weight: 500;
+}
+
+/* Dark mode tweaks */
+[data-theme='dark'] .cardSent {
+  border-color: var(--ifm-color-primary-light);
+  background-color: #5b3b8b;
+}
+
+[data-theme='dark'] .cardOverdue {
+  border-color: #d53f8c;
+  background-color: #63194f;
+}
+
+[data-theme='dark'] .badgeSent {
+  background: var(--ifm-color-primary-dark);
+  color: var(--ifm-color-primary-lightest);
+  box-shadow: none;
+}
+
+[data-theme='dark'] .badgeOverdue {
+  background: #d53f8c;
+  color: white;
+  box-shadow: none;
+}
+
+[data-theme='dark'] .badgeUpcoming {
+  background: var(--ifm-color-primary-darker);
+  color: var(--ifm-color-primary-lightest);
+  box-shadow: none;
+}
+
+[data-theme='dark'] .filterButton {
+  color: var(--ifm-color-primary-lightest);
+  background: #3c2a6a;
+}
+
+[data-theme='dark'] .filterButton:hover {
+  background: var(--ifm-color-primary-dark);
+  color: var(--ifm-color-primary-lightest);
+}
+
+[data-theme='dark'] .filterButtonActive {
+  background: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-darkest);
+  box-shadow: 0 0 10px var(--ifm-color-primary-lightest);
+}
+
+[data-theme='dark'] .meta {
+  color: var(--ifm-color-primary-lightest);
+}
+
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--ifm-color-emphasis-900, rgba(0, 0, 0, 0.5));
+  /* dark semi-transparent */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+/* Dark mode tweaks for Modal Overlay */
+[data-theme='dark'] .modalOverlay {
+  background-color: var(--ifm-color-primary-darker, rgba(255, 255, 255, 0.15));
+  /* lighter overlay in dark mode */
+}
+
+/* Modal Content */
+.modalContent {
+  background: var(--ifm-color-emphasis-0, white);
+  border-radius: 0.6rem;
+  padding: 2rem;
+  max-width: 480px;
+  width: 90%;
+  box-shadow: 0 8px 24px var(--ifm-shadow-secondary, rgba(0, 0, 0, 0.2));
+  position: relative;
+  color: var(--ifm-font-color-base, #000);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode tweaks for Modal Content */
+[data-theme='dark'] .modalContent {
+  background: var(--ifm-color-emphasis-900, #222);
+  color: var(--ifm-color-primary-lightest, #eee);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+}
+
+/* Close Button */
+.modalCloseBtn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--ifm-color-primary-darkest, #000);
+  transition: color 0.3s ease;
+}
+
+/* Dark mode tweaks for Close Button */
+[data-theme='dark'] .modalCloseBtn {
+  color: var(--ifm-color-primary-lightest, #fff);
+}
+
+/* Reuse your existing filter button styles for the Add button */
+.addButton {
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  background: var(--ifm-color-primary);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 0 10px var(--ifm-color-primary);
+  transition: background-color 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.addButton:hover {
+  background: var(--ifm-color-primary-dark);
+}
+
+/* Modal inputs and textarea */
+.modalContent input,
+.modalContent textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  font-size: 1rem;
+  color: var(--ifm-font-color-base);
+  background-color: var(--ifm-color-emphasis-0);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* Input focus state */
+.modalContent input:focus,
+.modalContent textarea:focus {
+  border-color: var(--ifm-color-primary);
+  outline: none;
+  box-shadow: 0 0 6px var(--ifm-color-primary-light);
+}
+
+/* Dark mode inputs */
+[data-theme='dark'] .modalContent input,
+[data-theme='dark'] .modalContent textarea {
+  background-color: var(--ifm-color-emphasis-900);
+  color: var(--ifm-color-primary-lightest);
+  border: 1px solid var(--ifm-color-emphasis-700);
+}
+
+/* Dark mode input focus */
+[data-theme='dark'] .modalContent input:focus,
+[data-theme='dark'] .modalContent textarea:focus {
+  border-color: var(--ifm-color-primary-lightest);
+  box-shadow: 0 0 6px var(--ifm-color-primary-lightest);
+}
+
+/* Modal heading */
+.modalContent h2 {
+  color: var(--ifm-color-primary);
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Submit button */
+.modalContent button[type="submit"] {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--ifm-color-primary);
+  transition: background-color 0.2s ease;
+}
+
+.modalContent button[type="submit"]:hover:not(:disabled) {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+/* Disabled button */
+.modalContent button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

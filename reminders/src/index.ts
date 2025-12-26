@@ -1,6 +1,11 @@
-import { getCorsHandlers } from './utils/cors';
-import { handleCreateReminder, handleGetReminders, handleDeleteReminder } from './handlers';
+import {
+  handleCreateReminder,
+  handleGetReminders,
+  handleDeleteReminder
+} from './routes/reminders';
+
 import { handleScheduledReminders } from './scheduled/checkReminders';
+import { withCors, handleOptions } from './utils/cors';
 
 export interface Env {
   REMINDERS_KV: KVNamespace;
@@ -8,40 +13,38 @@ export interface Env {
 }
 
 export default {
-  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
     const url = new URL(request.url);
-    
-    // Get CORS handlers configured with your DOCS_URL secret
-    const { preflight, corsify } = getCorsHandlers(env);
+    const origin = request.headers.get('Origin');
 
-    // Handle preflight requests
+    // ✅ Preflight
     if (request.method === 'OPTIONS') {
-      return preflight(request);
+      return handleOptions(request);
     }
 
-    // Route handlers
+    let response: Response;
+
     if (url.pathname === '/api/reminders') {
-      switch (request.method) {
-        case 'POST':
-          const createResponse = await handleCreateReminder(request, env, ctx);
-          return corsify(createResponse);
-          
-        case 'GET':
-          const getResponse = await handleGetReminders(request, env, ctx);
-          return corsify(getResponse);
+      if (request.method === 'POST') {
+        response = await handleCreateReminder(request, env, ctx);
+      } else if (request.method === 'GET') {
+        response = await handleGetReminders(request, env, ctx);
+      } else {
+        response = new Response('Method Not Allowed', { status: 405 });
       }
+    } else if (
+      url.pathname.startsWith('/api/reminders/') &&
+      request.method === 'DELETE'
+    ) {
+      response = await handleDeleteReminder(request, env, ctx);
+    } else {
+      response = new Response('Reminders API', { status: 200 });
     }
 
-    if (url.pathname.startsWith('/api/reminders/') && request.method === 'DELETE') {
-      const deleteResponse = await handleDeleteReminder(request, env, ctx);
-      return corsify(deleteResponse);
-    }
-
-    // Default response
-    return corsify(new Response('Reminders API', { status: 200 }));
+    return withCors(response, origin);
   },
 
-  async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
-    await handleScheduledReminders(event, env, ctx);
+  async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext) {
+    await handleScheduledReminders();
   }
 };

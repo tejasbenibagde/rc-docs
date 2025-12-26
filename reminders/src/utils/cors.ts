@@ -1,26 +1,27 @@
-import { createCors } from 'itty-cors';
-import type { Env } from '../index';
+// utils/cors.ts
+export function withCors(response: Response, origin: string | null) {
+  const headers = new Headers(response.headers);
 
-// Export a function that takes env and returns configured CORS handlers
-export function getCorsHandlers(env: Env) {
-  // Use the secret from wrangler
-  const docsUrl = env.DOCS_URL;
-  
-  // Always allow these origins for development
-  const allowedOrigins = [
-    docsUrl,                      // Your production docs URL from secret
-    'http://localhost:3000',      // Local dev server
-    'http://localhost:5173',      // Vite dev server
-  ];
+  headers.set(
+    'Access-Control-Allow-Origin',
+    origin ?? '*'
+  );
+  headers.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
+  headers.set('Access-Control-Allow-Headers', 'Content-Type');
 
-  return createCors({
-    origins: allowedOrigins,
-    methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+  return new Response(response.body, {
+    status: response.status,
+    headers,
   });
 }
 
-// For backward compatibility, export default handlers too
-export const { preflight, corsify } = createCors({
-  origins: ['*'],  // Fallback
-  methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
-});
+export function handleOptions(request: Request) {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      'Access-Control-Allow-Origin': request.headers.get('Origin') ?? '*',
+      'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
+}
