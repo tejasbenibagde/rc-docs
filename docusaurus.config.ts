@@ -49,7 +49,6 @@ const config: Config = {
         highlightSearchTermsOnTargetPage: true,
         explicitSearchResultPath: true,
         indexPages: true,
-        ignoreGlobalKeyboardEvents: true,
       },
     ],
   ],
